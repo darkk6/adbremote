@@ -1,0 +1,40 @@
+# The role for this application
+# Can use parameter "-role server/client" to override
+role: client
+
+# accept values are : NONE, BASIC, INFO, ERROR, DEBUG, case insensitive
+# Can use parameter "-log none/basic/info/error/debug" to override
+log:
+    level: BASIC
+
+# Configuration when "role" is "server"
+# Can use parameter "-port xxxx" to override server listen port
+server:
+    port: 6037
+
+# Configuration when "role" is "client"
+# Can use parameter "-host xxxx -port xxx" to override client connection info
+client:
+    host: 10.12.13.14
+    port: 6037
+
+# Configuration for adb
+# Command line parameter override :
+#   "-adbrole server/client" for adb role
+#   "-adbport xxxx" for adb port
+#   "-adbfolder xx/xx/xx" for adb binary path
+#   "-sockets n" for socket count
+#
+# Usually, development environment might keep some connection alive to adb daemon.
+# When using "application client" - "adb client" mode (aka client-client mode),
+# sockets might be occupied by development environment.
+# We use numbers of socket to handle this problem.
+# Try to find a balance number for your development environment.
+# But I suggest to use "server-client" or "client-server" mode
+#
+# "sockets" setting will be taken only when using "client-client" mode.
+adb: 
+    role: client
+    port: 5037
+    folder: ./adb
+    sockets: 5
