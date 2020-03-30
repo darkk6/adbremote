@@ -2,6 +2,7 @@ package tw.darkk6.adbremote
 
 import org.yaml.snakeyaml.Yaml
 import tw.darkk6.adbremote.app.App
+import tw.darkk6.adbremote.app.Constants
 import tw.darkk6.adbremote.data.Config
 import tw.darkk6.adbremote.util.ArgumentParser
 import tw.darkk6.adbremote.util.Logger
@@ -14,6 +15,8 @@ object MainEntry {
 
     @JvmStatic
     fun main(vararg args: String) {
+        println("\n${Constants.Build.NAME} v${Constants.Build.getFullVersion()}")
+
         val argParser = ArgumentParser(*args)
         if (argParser.hasParameter("h")) {
             showUsage()
